@@ -1,0 +1,23 @@
+#!/bin/sh
+
+if [ "$1" = "sh" ] || [ "$1" = "/bin/sh" ]
+then
+	exec "$@"
+elif [ "$1" = "kubectl" ]
+then
+	shift
+elif [ $# = 0 ]
+then
+	set -- proxy
+fi
+
+mkdir /etc/service/kubectl
+cat > /etc/service/kubectl/run <<EOF
+#!/bin/sh
+# exec is required
+exec kubectl $*
+EOF
+chmod +x /etc/service/kubectl/run
+
+set -- runsvdir /etc/service
+exec "$@"
