@@ -14,7 +14,9 @@ fi
 mkdir -p /etc/service/kubectl
 cat > /etc/service/kubectl/run <<EOF
 #!/bin/sh
-# exec is required
+# a friendly information blob what cluster the active context points to
+kubectl cluster-info
+# exec is required by runsv otherwise pid:s don't align up as expected
 exec kubectl $*
 EOF
 chmod +x /etc/service/kubectl/run
