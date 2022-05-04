@@ -26,6 +26,12 @@ Arguments can be specified with the regular `args` construct.
 If interprocess communication is required, mount an emptyDir onto
 `/etc/service/kubectl/supervise`.
 
+# Docker Hub
+
+Prebuilt container images available at Docker Hub:
+
+https://hub.docker.com/r/morecontainers/kubectl-runit
+
 # Author(s)
 
-* Henrik Holst <hholst80@gmail.com>
+* Henrik Holst <henrik.holst@outlook.com>
