@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if echo "$KUBECONFIG" | base64 -d 2> /dev/null > /tmp/kubeconfig
+then
+	export KUBECONFIG=/tmp/kubeconfig
+fi
+
 if [ "$1" = "sh" ] || [ "$1" = "/bin/sh" ]
 then
 	exec "$@"
